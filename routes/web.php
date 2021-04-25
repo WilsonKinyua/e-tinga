@@ -1,5 +1,7 @@
 <?php
-
+Route::get('/homepage', function () {
+    return view('layouts.homepage');
+});
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
