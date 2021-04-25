@@ -123,7 +123,7 @@
               </div>
               <div class="subscription-block__form">
                 <form action="#">
-                  <div class="subscription-block__form-box"><input class="uk-input uk-form-large" type="text" placeholder="Enter your email"><button class="uk-button uk-button-large" type="submit"> <span>Subscribe</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></button></div>
+                  <div class="subscription-block__form-box"><input class="uk-input uk-form-large" type="text" placeholder="Enter your email"><button class="uk-button uk-button-large" type="submit"> <span>Subscribe</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
                 </form>
               </div>
             </div>
@@ -199,7 +199,7 @@
           <div class="uk-offcanvas-bar"><button class="uk-offcanvas-close" type="button" data-uk-close=""></button>
             <div class="uk-margin">
               <div class="logo"><a class="logo__link" href="/">
-                  {{-- <img class="logo__img" src="./assdets/img/logo-white.png" alt="logo"> --}}
+                  {{-- class="logo__img" src="./assdets/img/logo-white.png" alt="logo"> --}}
                   <h1 class="text-white">{{ trans('panel.site_title') }}</h1>
                 </a></div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use App\Traits\Auditable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -69,5 +70,45 @@ class Site extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+       /**
+     * Get all the settings
+     *
+     * @return mixed
+     */
+    public static function getSite()
+    {
+        if ( ! Cache::get('site.settings')) {
+            Cache::forever('site.settings', self::latest()->first());
+        }
+
+        return Cache::get('site.settings');
+    }
+
+    /**
+     * Flush the cache
+     */
+    public static function flushCache()
+    {
+        Cache::forget('site.settings');
+    }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updated(function () {
+            self::flushCache();
+        });
+
+        static::created(function() {
+            self::flushCache();
+        });
     }
 }
