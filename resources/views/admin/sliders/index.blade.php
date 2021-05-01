@@ -49,10 +49,10 @@
                                 {{ $slider->id ?? '' }}
                             </td>
                             <td>
-                                {{ $slider->title ?? '' }}
+                                {!! $slider->title ?? '' !!}
                             </td>
                             <td>
-                                {{ $slider->caption ?? '' }}
+                                {!! $slider->caption ?? '' !!}
                             </td>
                             <td>
                                 @if($slider->photo)

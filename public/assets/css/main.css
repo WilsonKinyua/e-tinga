@@ -2011,7 +2011,7 @@ body {
   display: block;
   position: relative;
   padding-bottom: 115px;
-  background-image: url(../img/bg/bg_find.png);
+  background-image: url(../img/bg_find.png);
   background-position: center bottom;
   background-repeat: no-repeat;
 }
@@ -2297,7 +2297,7 @@ body.page-categories-2 .page-footer:before {
   position: relative;
   padding: 110px 0 100px;
   background-attachment: fixed;
-  background-image: url(../img/bg/bg_stats.jpg);
+  background-image: url(../img/bg_stats.jpg);
   background-position: left center;
   background-size: cover;
 }
@@ -2372,7 +2372,7 @@ body.page-categories-2 .page-footer:before {
   padding-top: 125px;
   padding-bottom: 120px;
   background-color: #111111;
-  background-image: url(../img/decor/decor-about-left.png), url(../img/decor/decor-about-right.png);
+  background-image: url(../img/decor-about-left.png), url(../img/decor-about-right.png);
   background-position: top 70px left -38%, bottom right -3%;
   background-repeat: no-repeat, no-repeat;
   background-size: 59.3vw, 18.3vw;
@@ -2557,7 +2557,7 @@ body.page-categories-2 .page-footer:before {
   position: relative;
   padding: 62px 0;
   background-color: #edb509;
-  background-image: url(../img/bg/bg_cta.png);
+  background-image: url(../img/bg_cta.png);
 }
 
 .section-cta .uk-button:hover,.section-cta .uk-button:focus,.section-cta .uk-button:active {
@@ -2771,7 +2771,7 @@ body.page-categories-2 .page-footer:before {
   margin-bottom: 70px;
   margin-bottom: 3.65vw;
   background-attachment: fixed;
-  background-image: url(../img/bg/bg_equipment.jpg);
+  background-image: url(../img/bg_contacts.jpg);
   background-position: left center;
   background-size: cover;
 }
