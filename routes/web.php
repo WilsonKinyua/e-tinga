@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('sliders', 'SlidersController');
 
     // Customer Reviews
-    Route::resource('customer-reviews', 'CustomerReviewsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('customer-reviews', 'CustomerReviewsController', ['except' => ['store', 'edit', 'update', 'destroy']]);
 
     // Subscribers
     Route::resource('subscribers', 'SubscribersController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
@@ -110,3 +110,10 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+
+// public route
+
+// getting machineries by category id
+Route::get("category/{id}","HomePageController@categoryMachinery")->name('machinery.category');
+// getting machinery details
+Route::get('machinery-details/{id}','HomePageController@machineryDetails')->name('machinery.details');

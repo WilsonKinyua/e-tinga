@@ -69,7 +69,7 @@
           <div class="uk-grid uk-grid-medium uk-child-width-1-3@m uk-child-width-1-2@s" data-uk-grid>
               @foreach ($categories as $category)
               <div>
-                <div class="category-item"> <a class="category-item__link uk-inline-clip uk-transition-toggle" href="#!" tabindex="0">
+                <div class="category-item"> <a class="category-item__link uk-inline-clip uk-transition-toggle" href="{{ route('machinery.category', $category->id)}}" tabindex="0">
                     <div class="category-item__media">
                         @if($category->photo)
                             <img src="{{ $category->photo->getUrl() }}" alt="Category">
@@ -83,9 +83,9 @@
                   </a></div>
               </div>
               @endforeach
-           
+
           </div>
-          <div class="uk-margin-large-top uk-text-center"><a class="uk-button uk-button-default uk-button-large" href="#!"><span>More categories</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
+          {{-- <div class="uk-margin-large-top uk-text-center"><a class="uk-button uk-button-default uk-button-large" href="#!"><span>More categories</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div> --}}
         </div>
       </div>
     </div>
@@ -285,7 +285,7 @@
           <div class="equipment-box__media"><img src="{{ asset('assets/img/img-equipment.jpg')}}" alt=""></div>
           <div class="equipment-box__desc">
             <div class="equipment-box__title">Worried About The Idling Yard?</div>
-            <div class="equipment-box__text">Start hiring your equipment(s) with us today!</div>
+            <div class="equipment-box__text">Start hiring our equipment(s) today!</div>
             <div class="equipment-box__btn"><a class="uk-button uk-button-large"><span>Learn more</span><img src="{{ asset('assets/img/icons/arrow.svg"')}} alt="arrow" data-uk-svg></a></div>
           </div>
         </div>

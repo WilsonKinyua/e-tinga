@@ -22,7 +22,381 @@
 - FOOTER
 -------------------------------------------------------------------*/
 
+.text-danger {
+    color: red;
+}
 
+.link {
+    text-decoration: none !important;
+}
+
+.equipment-detail__title {
+    margin-bottom: 10px;
+    color: #222;
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 767px) {
+    .equipment-detail__title {
+      font-size: calc(22px + 23.8 * ((100vw - 320px) / 1920));
+    }
+  }
+
+  @media (min-width: 767px) {
+    .equipment-detail__title {
+      font-size: calc(22px + 14 * (100vw / 1920));
+    }
+  }
+
+
+.equipment-detail__btns {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+            align-items: center;
+            justify-content: space-between;
+    margin: 35px 0 60px;
+  }
+
+  @media only screen and (max-width: 639px) {
+    .equipment-detail__btns {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      margin: 25px 0;
+    }
+  }
+
+  .equipment-detail__btns a {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+            align-items: center;
+            justify-content: center;
+    width: calc(50% - 5px);
+    background-color: #fff9e7;
+    color: #222;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 3.72;
+    transition: 0.3s;
+  }
+
+  .equipment-detail__btns a:hover, .equipment-detail__btns a:focus, .equipment-detail__btns a:active {
+    background-color: #edb509;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .equipment-detail__btns a:hover svg, .equipment-detail__btns a:focus svg, .equipment-detail__btns a:active svg {
+    color: #ffffff;
+  }
+
+  .equipment-detail__btns a svg {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    margin-right: 10px;
+    color: #edb509;
+    transition: 0.3s;
+  }
+
+  @media only screen and (max-width: 639px) {
+    .equipment-detail__btns a {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+
+  .equipment-order {
+    background-color: #f6f6f6;
+  }
+
+  .equipment-order + .equipment-order {
+    margin-top: 35px;
+  }
+
+  .equipment-order__price {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    padding: 50px 20px;
+    background-color: #222;
+    color: #ffffff;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .equipment-order__price {
+      font-size: calc(30px + 17 * ((100vw - 320px) / 1920));
+    }
+  }
+
+  @media (min-width: 767px) {
+    .equipment-order__price {
+      font-size: calc(30px + 10 * (100vw / 1920));
+    }
+  }
+
+  .equipment-order__price span {
+    display: inline-block;
+    position: relative;
+  }
+
+  .equipment-order__price span:before,
+  .equipment-order__price span:after {
+    display: block;
+    position: absolute;
+    top: 15px;
+    width: 30px;
+    height: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: '';
+  }
+
+  .equipment-order__price span::before {
+    right: calc(100% + 10px);
+    background-image: url(../img/decor/decor-title-left.svg);
+  }
+
+  .equipment-order__price span::after {
+    left: calc(100% + 10px);
+    background-image: url(../img/decor/decor-title-right.svg);
+  }
+
+  .equipment-order__price small {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    .equipment-order__price small {
+      font-size: calc(12px + 10.2 * ((100vw - 320px) / 1920));
+    }
+  }
+
+  @media (min-width: 767px) {
+    .equipment-order__price small {
+      font-size: calc(12px + 6 * (100vw / 1920));
+    }
+  }
+
+  .equipment-order__form {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+            flex-direction: column;
+            align-items: center;
+    padding: 20px 50px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .equipment-order__form {
+      padding: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .equipment-order__form {
+      padding: 20px 10px;
+    }
+  }
+
+  @media only screen and (max-width: 959px) {
+    .equipment-order__form {
+      padding: 20px 50px;
+    }
+  }
+
+  @media only screen and (max-width: 639px) {
+    .equipment-order__form {
+      padding: 20px;
+    }
+  }
+
+  .equipment-order__form > * {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+
+  .equipment-order__form .uk-margin {
+    min-width: 250px;
+  }
+
+  .equipment-order__form .datepicker-inline .datepicker {
+    border: 0;
+    background: transparent;
+  }
+
+  .equipment-order__form input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-bottom: 1px solid #dddddd;
+    outline: 0;
+    background-color: transparent;
+    color: #555;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 2.78;
+  }
+
+  @media (max-width: 767px) {
+    .equipment-order__form input {
+      font-size: calc(14px + 6.8 * ((100vw - 320px) / 1920));
+    }
+  }
+
+  @media (min-width: 767px) {
+    .equipment-order__form input {
+      font-size: calc(14px + 4 * (100vw / 1920));
+    }
+  }
+
+  .equipment-order__value {
+    color: #396;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .equipment-order__value .uk-icon {
+    margin-right: 10px;
+  }
+
+  .equipment-order-total {
+    margin-top: 35px;
+    padding: 50px;
+    background-color: #f6f6f6;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .equipment-order-total {
+      padding: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .equipment-order-total {
+      padding: 20px 10px;
+    }
+  }
+
+  @media only screen and (max-width: 959px) {
+    .equipment-order-total {
+      padding: 50px;
+    }
+  }
+
+  @media only screen and (max-width: 639px) {
+    .equipment-order-total {
+      padding: 20px;
+    }
+  }
+
+  .equipment-order-total ul {
+    margin: 0 0 50px;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .equipment-order-total ul li {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+            align-items: center;
+            justify-content: space-between;
+    color: #555;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 767px) {
+    .equipment-order-total ul li {
+      font-size: calc(14px + 6.8 * ((100vw - 320px) / 1920));
+    }
+  }
+
+  @media (min-width: 767px) {
+    .equipment-order-total ul li {
+      font-size: calc(14px + 4 * (100vw / 1920));
+    }
+  }
+
+  .equipment-order-total ul li + li {
+    margin-top: 20px;
+  }
+
+  .equipment-order-total ul li span + span {
+    color: #222222;
+    font-weight: 600;
+  }
+
+  .equipment-order-total ul li:last-child {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #dddddd;
+    color: #222;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 767px) {
+    .equipment-order-total ul li:last-child {
+      font-size: calc(16px + 10.2 * ((100vw - 320px) / 1920));
+    }
+  }
+
+  @media (min-width: 767px) {
+    .equipment-order-total ul li:last-child {
+      font-size: calc(16px + 6 * (100vw / 1920));
+    }
+  }
 
 @font-face {
   font-display: swap;

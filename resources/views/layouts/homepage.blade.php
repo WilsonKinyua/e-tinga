@@ -45,9 +45,9 @@
       <div class="page-header-bottom" data-uk-sticky>
         <div class="page-header-bottom__left">
           <div class="logo">
-              <a class="logo__link" href="#">
+              <a class="logo__link" href="/">
               {{-- <img class="logo__img" src="./assets/imsg/logo.png" alt=""> --}}
-              <h1 style="text-transform: uppercase">{{ trans('panel.site_title') }}</h1>
+              <h1 class="link" style="text-transform: uppercase">{{ trans('panel.site_title') }}</h1>
             </a>
             </div>
           <div class="support"> <a class="support__link" href="tel:{{ trans('panel.phone1') }}">
@@ -63,17 +63,19 @@
             <div class="nav-overlay uk-visible@l">
               <ul class="uk-navbar-nav">
                 <li class="uk-active"><a href="/">Home</a></li>
-                <li><a href="#">Equipments<i class="fas fa-angle-down"></i></a>
+                <li><a href="#">Top Equipments<i class="fas fa-angle-down"></i></a>
                   <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li><a href="#">Page categories 1</a></li>
                     </ul>
                   </div>
                 </li>
-                <li><a href="#">Rental Deals<i class="fas fa-angle-down"></i></a>
+                <li><a href="#">Top Categories<i class="fas fa-angle-down"></i></a>
                   <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Excavators</a></li>
+                      @foreach ($categories as $category)
+                        <li><a href="{{ route('machinery.category', $category->id)}}">{{ $category->name }}</a></li>
+                      @endforeach
                     </ul>
                   </div>
                 </li>
@@ -200,7 +202,7 @@
             <div class="uk-margin">
               <div class="logo"><a class="logo__link" href="/">
                   {{-- class="logo__img" src="./assdets/img/logo-white.png" alt="logo"> --}}
-                  <h1 class="text-white">{{ trans('panel.site_title') }}</h1>
+                  <h1 class="text-white link">{{ trans('panel.site_title') }}</h1>
                 </a></div>
             </div>
             <div class="uk-margin">
@@ -251,7 +253,7 @@
           <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical"><button class="uk-modal-close-default" type="button" data-uk-close=""></button>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                  nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                  nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                   commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
