@@ -117,3 +117,5 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::get("category/{id}","HomePageController@categoryMachinery")->name('machinery.category');
 // getting machinery details
 Route::get('machinery-details/{id}','HomePageController@machineryDetails')->name('machinery.details');
+// getting about page
+Route::get('about-us','HomePageController@aboutUs')->name('about.us');

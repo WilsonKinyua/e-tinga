@@ -256,8 +256,8 @@ return [
         ],
     ],
     'aboutu' => [
-        'title'          => 'Aboutus',
-        'title_singular' => 'Aboutu',
+        'title'          => 'About us',
+        'title_singular' => 'About us',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',

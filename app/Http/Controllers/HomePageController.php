@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aboutu;
 use App\Models\Category;
 use App\Models\MachineryCategory;
 use App\Models\Slider;
@@ -41,6 +42,14 @@ class HomePageController extends Controller
         $machineryCategory->with(['category','media'])->get();
 
         return view('homepage.machinery-details',compact('categories','machineryCategory'));
+    }
+
+    // getting about us page
+
+    public function aboutUs() {
+        $categories = Category::with(['media'])->get();
+        $about = Aboutu::orderBy('id','desc')->limit(1)->get();
+        return view('homepage.about-us',compact('categories','about'));
     }
 
 }

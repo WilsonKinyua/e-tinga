@@ -79,7 +79,7 @@
                     </ul>
                   </div>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="{{ route('about.us')}}">About</a></li>
                 <li><a href="#">News<i class="fas fa-angle-down"></i></a>
                   <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
