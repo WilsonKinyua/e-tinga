@@ -59,4 +59,12 @@ class HomePageController extends Controller
         $blogs = Blog::with(['blog_category', 'created_by', 'tags', 'media'])->get();
         return view('homepage.blogs',compact('blogs','categories'));
     }
+
+    // preview blog details
+    public function blogDetails($id) {
+        $categories = Category::with(['media'])->get();
+        $blog = Blog::findOrFail($id);
+        $blogs = Blog::orderBy("id","desc")->with(['blog_category', 'created_by', 'tags', 'media'])->limit(4)->get();
+        return view('homepage.blog-details',compact('blog','categories','blogs'));
+    }
 }

@@ -24,7 +24,7 @@
             @foreach ($blogs as $blog)
             <div>
                 <div class="blog-item">
-                <div class="blog-item__media"><a href="#!">
+                <div class="blog-item__media"><a href="{{ route('blog.details', $blog->id)}}">
                     @if($blog->photo)
                             <img src="{{ $blog->photo->getUrl() }}" alt="{{ $blog->title }}">
                     @endif
@@ -35,14 +35,14 @@
                     <div class="blog-item__date">
                         {{ $blog->created_at->diffForHumans() }}
                     </div>
-                    <div class="blog-item__author">By <a>{{ $blog->created_by->name ?? '' }}</a></div>
+                    <div class="blog-item__author">By <a href="{{ route('blog.details', $blog->id)}}">{{ $blog->created_by->name ?? '' }}</a></div>
                     </div>
                     <div class="blog-item__title">{{ $blog->title }}</div>
                     <div class="blog-item__intro">
                         {!! Str::limit($blog->description, 60, '...') !!}
                     </div>
                 </div>
-                <div class="blog-item__bottom"> <a class="link-more" href="#!"><span>Read More</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></a></div>
+                <div class="blog-item__bottom"> <a class="link-more" href="{{ route('blog.details', $blog->id)}}"><span>Read More</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></a></div>
                 </div>
             </div>
             @endforeach

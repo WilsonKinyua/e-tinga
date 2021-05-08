@@ -121,3 +121,5 @@ Route::get('machinery-details/{id}','HomePageController@machineryDetails')->name
 Route::get('about-us','HomePageController@aboutUs')->name('about.us');
 // list blogs
 Route::get("blogs",'HomePageController@blogList')->name('blogs.list');
+// preview blog details
+Route::get("blog/{id}","HomePageController@blogDetails")->name("blog.details");
