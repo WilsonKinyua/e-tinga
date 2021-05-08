@@ -18,6 +18,8 @@
   <meta name="theme-color" content="#222222">
   <link rel="stylesheet" href="{{ asset('assets/css/libs.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
+    {{-- toastr --}}
+    <link rel="stylesheet" href="{{ asset('assets/toastr.min.css')}}">
 </head>
 
 <body class="page-home">
@@ -87,7 +89,7 @@
                     </ul>
                   </div>
                 </li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{ route('contact.us') }}">Contact</a></li>
               </ul>
             </div>
             {{-- <div class="nav-overlay search-btn"><a class="uk-navbar-toggle" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></div>
@@ -174,7 +176,7 @@
                 <ul class="uk-nav uk-list-disc">
                   <li> <a href="{{ route('about.us')}}">About {{ trans('panel.site_title') }}</a></li>
                   <li> <a href="{{ route('blogs.list')}}">Latest News</a></li>
-                  <li> <a href="#!">Contact Us</a></li>
+                  <li> <a href="{{ route('contact.us') }}">Contact Us</a></li>
                 </ul>
               </div>
             </div>
@@ -214,7 +216,7 @@
                     <li><a href="{{ route('blogs.list')}}">Blogs</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{ route('contact.us') }}">Contact</a></li>
               </ul>
             </div>
             <div class="uk-margin">
@@ -252,6 +254,35 @@
     </div>
     <script src="{{ asset('assets/js/libs.js')}}"></script>
     <script src="{{ asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/libs/jquery-3.1.1.min.js')}}"></script>
+        <!-- toastr -->
+    {{-- notification --}}
+    <script src="{{ asset('assets/toastr.min.js')}}"></script>
+
+    <script>
+        // Get the Toast button
+        var toastButton = document.getElementById("toast-btn");
+        // Get the Toast element
+        var toastElement = document.getElementsByClassName("toast")[0];
+
+        toastButton.onclick = function() {
+            $('.toast').toast('show');
+        }
+    </script>
+
+    <script>
+        @if (session()->has('success'))
+            toastr.success("{{session()->get('success')}}");
+        @endif
+
+        @if (session()->has('danger'))
+            toastr.warning("{{session()->get('danger')}}");
+        @endif
+
+        @if (session()->has('error'))
+            toastr.error("{{session()->get('error')}}");
+        @endif
+    </script>
   </body>
 
   </html>

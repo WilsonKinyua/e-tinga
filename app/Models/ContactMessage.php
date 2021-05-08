@@ -32,11 +32,11 @@ class ContactMessage extends Model
         'deleted_at',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        ContactMessage::observe(new \App\Observers\ContactMessageActionObserver());
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     ContactMessage::observe(new \App\Observers\ContactMessageActionObserver());
+    // }
 
     protected function serializeDate(DateTimeInterface $date)
     {

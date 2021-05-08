@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Aboutu;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\ContactMessage;
 use App\Models\MachineryCategory;
 use App\Models\Slider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomePageController extends Controller
@@ -66,5 +68,17 @@ class HomePageController extends Controller
         $blog = Blog::findOrFail($id);
         $blogs = Blog::orderBy("id","desc")->with(['blog_category', 'created_by', 'tags', 'media'])->limit(4)->get();
         return view('homepage.blog-details',compact('blog','categories','blogs'));
+    }
+
+    // contact us
+    public function contactUs() {
+        $categories = Category::with(['media'])->get();
+        return view('homepage.contact-us',compact('categories'));
+    }
+
+    // add contact messages
+    public function contactAdd(Request $request) {
+        $contact = ContactMessage::create($request->all());
+        return redirect()->back()->with("success","Message sent successfully");
     }
 }
