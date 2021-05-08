@@ -29,11 +29,11 @@ class Subscriber extends Model
         'deleted_at',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        Subscriber::observe(new \App\Observers\SubscriberActionObserver());
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     Subscriber::observe(new \App\Observers\SubscriberActionObserver());
+    // }
 
     protected function serializeDate(DateTimeInterface $date)
     {

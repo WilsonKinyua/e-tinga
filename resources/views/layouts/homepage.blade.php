@@ -126,8 +126,9 @@
                 <h4>Newsletter Subscription</h4><span>Get Latest Deals from {{ trans('panel.site_title') }}</span>
               </div>
               <div class="subscription-block__form">
-                <form action="#">
-                  <div class="subscription-block__form-box"><input class="uk-input uk-form-large" type="text" placeholder="Enter your email"><button class="uk-button uk-button-large" type="submit"> <span>Subscribe</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
+                <form action="{{ route('subsciber.add')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                  <div class="subscription-block__form-box"><input class="uk-input uk-form-large" name="email" type="text" placeholder="Enter your email"><button class="uk-button uk-button-large" type="submit"> <span>Subscribe</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
                 </form>
               </div>
             </div>

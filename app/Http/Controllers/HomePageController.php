@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\ContactMessage;
 use App\Models\MachineryCategory;
 use App\Models\Slider;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -80,5 +81,11 @@ class HomePageController extends Controller
     public function contactAdd(Request $request) {
         $contact = ContactMessage::create($request->all());
         return redirect()->back()->with("success","Message sent successfully");
+    }
+
+    // adding subscribers for newsletter
+    public function addNewsletter(Request $request) {
+        Subscriber::create($request->all());
+        return redirect()->back()->with("success","You have been successfully added to our mailing list!!");
     }
 }
