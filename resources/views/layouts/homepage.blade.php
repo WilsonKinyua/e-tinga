@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Welcome {{ trans('panel.site_title') }}</title>
-  <meta content="Chernyh Mihail" name="author">
-  <meta content="Antek" name="description">
+  <meta content="" name="developer">
+  <meta content="{{ trans('panel.site_title') }}" name="description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="HandheldFriendly" content="true">
   <meta name="format-detection" content="telephone=no">
@@ -80,10 +80,10 @@
                   </div>
                 </li>
                 <li><a href="{{ route('about.us')}}">About</a></li>
-                <li><a href="#">News<i class="fas fa-angle-down"></i></a>
+                <li><a href="{{ route('blogs.list')}}">News<i class="fas fa-angle-down"></i></a>
                   <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Blogs</a></li>
+                      <li><a href="{{ route('blogs.list')}}">Blogs</a></li>
                     </ul>
                   </div>
                 </li>
@@ -172,21 +172,9 @@
               <div>
                 <div class="title">Useful links</div>
                 <ul class="uk-nav uk-list-disc">
-                  <li> <a href="#!">About Antek Rental</a></li>
-                  <li> <a href="#!">Latest News</a></li>
-                  <li> <a href="#!">Our Process</a></li>
-                  <li> <a href="#!">Terms & Conditions</a></li>
-                  <li> <a href="#!">Protections & Coverages</a></li>
-                </ul>
-              </div>
-              <div>
-                <div class="title">Explore antek</div>
-                <ul class="uk-nav uk-list-disc">
-                  <li><a href="#!">Signup or Register</a></li>
-                  <li><a href="#!">Get Equipments</a></li>
-                  <li><a href="#!">Rental Pricing</a></li>
-                  <li><a href="#!">Quick User Guide</a></li>
-                  <li><a href="#!">Read FAQ’s</a></li>
+                  <li> <a href="{{ route('about.us')}}">About {{ trans('panel.site_title') }}</a></li>
+                  <li> <a href="{{ route('blogs.list')}}">Latest News</a></li>
+                  <li> <a href="#!">Contact Us</a></li>
                 </ul>
               </div>
             </div>
@@ -208,20 +196,22 @@
             <div class="uk-margin">
               <ul class="uk-nav-default uk-nav-parent-icon" data-uk-nav>
                 <li class="uk-active"><a href="/">Home</a></li>
-                <li class="uk-parent"><a href="#">Equipments</a>
+                <li class="uk-parent"><a href="#">Top Equipments</a>
                   <ul class="uk-nav-sub">
                     <li><a href="#">Page categories 1</a></li>
                   </ul>
                 </li>
-                <li class="uk-parent"><a href="#">Rental Deals</a>
+                <li class="uk-parent"><a href="#">Top Categories</a>
                   <ul class="uk-nav-sub">
-                    <li><a href="#">Excavators</a></li>
+                    @foreach ($categories as $category)
+                        <li><a href="{{ route('machinery.category', $category->id)}}">{{ $category->name }}</a></li>
+                    @endforeach
                   </ul>
                 </li>
-                <li><a href="#">About</a></li>
-                <li class="uk-parent"><a href="#">News</a>
+                <li><a href="{{ route('about.us')}}">About</a></li>
+                <li class="uk-parent"><a href="{{ route('blogs.list')}}">News</a>
                   <ul class="uk-nav-sub">
-                    <li><a href="#">Blogs</a></li>
+                    <li><a href="{{ route('blogs.list')}}">Blogs</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Contact</a></li>

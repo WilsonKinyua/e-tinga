@@ -119,3 +119,5 @@ Route::get("category/{id}","HomePageController@categoryMachinery")->name('machin
 Route::get('machinery-details/{id}','HomePageController@machineryDetails')->name('machinery.details');
 // getting about page
 Route::get('about-us','HomePageController@aboutUs')->name('about.us');
+// list blogs
+Route::get("blogs",'HomePageController@blogList')->name('blogs.list');

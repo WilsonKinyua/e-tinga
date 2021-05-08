@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aboutu;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\MachineryCategory;
 use App\Models\Slider;
@@ -52,4 +53,10 @@ class HomePageController extends Controller
         return view('homepage.about-us',compact('categories','about'));
     }
 
+    // display blogs list
+    public function blogList() {
+        $categories = Category::with(['media'])->get();
+        $blogs = Blog::with(['blog_category', 'created_by', 'tags', 'media'])->get();
+        return view('homepage.blogs',compact('blogs','categories'));
+    }
 }
