@@ -15,6 +15,47 @@
                         </div>
                     @endif
 
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <div class="card text-white bg-warning">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ count($bookings) }}</div>
+                                    <div>Total Bookings</div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card text-white bg-success">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ count($farmers) }}</div>
+                                    <div>Farmers</div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card text-white bg-primary">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ count($subscribers) }}</div>
+                                    <div>Subscribers</div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ count($machineries) }}</div>
+                                    <div>Machineries</div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         {{-- Widget - latest entries --}}
                         <div class="{{ $settings1['column_class'] }}" style="overflow-x: auto;">

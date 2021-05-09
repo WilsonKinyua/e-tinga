@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Booking;
+use App\Models\Farmer;
+use App\Models\MachineryCategory;
+use App\Models\Subscriber;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class HomeController
@@ -157,10 +161,10 @@ class HomeController
             'entries_number'        => '10',
             'fields'                => [
                 'title'         => '',
-                'description'   => '',
-                'photo'         => '',
-                'created_at'    => '',
+                // 'description'   => '',
+                // 'photo'         => '',
                 'blog_category' => 'name',
+                'created_at'    => '',
             ],
             'translation_key' => 'blog',
         ];
@@ -175,7 +179,10 @@ class HomeController
         if (!array_key_exists('fields', $settings5)) {
             $settings5['fields'] = [];
         }
-
-        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4', 'settings5'));
+        $bookings = Booking::all();
+        $farmers = Farmer::all();
+        $subscribers = Subscriber::all();
+        $machineries = MachineryCategory::all();
+        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4', 'settings5','bookings','farmers','subscribers','machineries'));
     }
 }
