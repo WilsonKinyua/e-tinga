@@ -28,7 +28,8 @@
         <div class="find-box">
           <div class="find-box__title"> <span>Find The Right Equipment</span></div>
           <div class="find-box__form">
-            <form action="#!">
+            <form action="{{ route('search.machinery')}}" method="POST" enctype="multipart/form-data">
+                @csrf
               <div class="uk-grid uk-grid-medium uk-flex-middle uk-child-width-1-3@m uk-child-width-1-2@s" data-uk-grid>
                 {{-- <div>
                   <div class="uk-inline uk-width-1-1"><span class="uk-form-icon"><img src="./assets/img/icons/truck.svg" alt="truck" data-uk-svg></span><select class="uk-select uk-form-large" name="category">
@@ -41,7 +42,7 @@
                 <div>
                   <div class="uk-inline uk-width-1-1"><span class="uk-form-icon">
                       <img src="{{ asset('assets/img/icons/derrick.svg')}}" alt="derrick" data-uk-svg></span>
-                      <input class="uk-input uk-form-large uk-width-1-1" type="text" placeholder="Equipment Name"></div>
+                      <input class="uk-input uk-form-large uk-width-1-1" required name="q" type="text" placeholder="Equipment Name"></div>
                 </div>
                 {{-- <div>
                   <div class="uk-inline uk-width-1-1"><span class="uk-form-icon"> <img src="./assets/img/icons/location.svg" alt="location" data-uk-svg></span><input class="uk-input uk-form-large uk-width-1-1" type="text" placeholder="What’s Your Location"></div>
@@ -52,7 +53,7 @@
                 {{-- <div>
                   <div class="uk-inline uk-width-1-1"><label> <input class="uk-radio" type="radio" name="delivery" checked><span>{{ trans('panel.site_title') }} Delivery</span></label><label> <input class="uk-radio" type="radio" name="delivery"><span>Self Pickup</span></label></div>
                 </div> --}}
-                <div><button class="uk-button uk-button-secondary uk-button-large uk-width-1-1" type="submit"><span>Find My Rentals</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
+                <div><button class="uk-button uk-button-secondary uk-button-large uk-width-1-1" type="submit"><span>Find Equipment</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
               </div>
             </form>
           </div>
@@ -167,7 +168,7 @@
               <li>
                 <div class="steps-item">
                   <div class="steps-item__box" data-uk-tooltip="title: Best thing about {{ trans('panel.site_title') }} is to earn some extra revenue on their equipments.; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 500; pos: bottom">
-                    <div class="steps-item__icon"><img src="./assets/img/icons/ico-step-1.png" alt="icon-step"></div>
+                    <div class="steps-item__icon"><img src="{{ asset('assets/img/icons/ico-step-1.png')}}" alt="icon-step"></div>
                     <div class="steps-item__title"><b>1</b><span>Search Your Equipment</span></div>
                   </div>
                 </div>
@@ -175,7 +176,7 @@
               <li>
                 <div class="steps-item">
                   <div class="steps-item__box" data-uk-tooltip="title: Best thing about {{ trans('panel.site_title') }} is to earn some extra revenue on their equipments.; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 500; pos: bottom">
-                    <div class="steps-item__icon"><img src="./assets/img/icons/ico-step-2.png" alt="icon-step"></div>
+                    <div class="steps-item__icon"><img src="{{ asset('assets/img/icons/ico-step-2.png')}}" alt="icon-step"></div>
                     <div class="steps-item__title"><b>2</b><span>compare Your selection</span></div>
                   </div>
                 </div>
@@ -183,7 +184,7 @@
               <li>
                 <div class="steps-item">
                   <div class="steps-item__box" data-uk-tooltip="title: Best thing about {{ trans('panel.site_title') }} is to earn some extra revenue on their equipments.; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 500; pos: bottom">
-                    <div class="steps-item__icon"><img src="./assets/img/icons/ico-step-3.png" alt="icon-step"></div>
+                    <div class="steps-item__icon"><img src="{{ asset('assets/img/icons/ico-step-3.png')}}" alt="icon-step"></div>
                     <div class="steps-item__title"><b>3</b><span>Reserve the equipment   </span></div>
                   </div>
                 </div>
@@ -191,7 +192,7 @@
               <li>
                 <div class="steps-item">
                   <div class="steps-item__box" data-uk-tooltip="title: Best thing about {{ trans('panel.site_title') }} is to earn some extra revenue on their equipments.; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 500; pos: bottom">
-                    <div class="steps-item__icon"><img src="./assets/img/icons/ico-step-4.png" alt="icon-step"></div>
+                    <div class="steps-item__icon"><img src="{{ asset('assets/img/icons/ico-step-4.png')}}" alt="icon-step"></div>
                     <div class="steps-item__title"><b>4</b><span> Get Start Your Project</span></div>
                   </div>
                 </div>
@@ -207,18 +208,22 @@
     <div class="section-cta">
       <div class="uk-container-expand">
         <div class="section-cta__box">
-          <div class="section-cta__img"><img src="./assets/img-cta.png" alt=""></div>
+          <div class="section-cta__img"><img src="{{ asset('assets/img-cta.png')}}" alt=""></div>
           <div class="section-cta__title"> <span>We Help Industry To Utilize The<br> Heavy Equipment Work Better</span></div>
           <div class="section-cta__support">
-            <div class="support"> <a class="support__link" href="tel:236-799-5500">
+            <div class="support"> <a class="support__link" href="tel:{{ trans('panel.phone1') }}">
                 <div class="support__icon"><i class="fas fa-headset"></i></div>
                 <div class="support__desc">
                   <div class="support__label">Get Quick Support</div>
-                  <div class="support__phone">236-799-5500</div>
+                  <div class="support__phone">{{ trans('panel.phone1') }}</div>
                 </div>
               </a></div>
           </div>
-          <div class="section-cta__btn"><a class="uk-button uk-button-danger uk-button-large"><span>Get started</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
+          <div class="section-cta__btn">
+              <a href="{{ route('contact.us')}}" class="uk-button uk-button-danger uk-button-large"><span>Contact Us</span>
+                <img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg>
+            </a>
+        </div>
         </div>
       </div>
     </div>
@@ -230,7 +235,7 @@
               <div>
                 <div class="block-icon"><a class="block-icon__link" href="#!">
                     <div class="block-icon__box">
-                      <div class="block-icon__ico"><img src="./assets/img/icons/ico-why-choose-1.svg" alt="block-icon"></div>
+                      <div class="block-icon__ico"><img src="{{ asset('assets/img/icons/ico-why-choose-1.svg')}}" alt="block-icon"></div>
                       <div class="block-icon__title">Rent Quality<br> Equipment</div>
                     </div>
                   </a></div>
@@ -238,7 +243,7 @@
               <div>
                 <div class="block-icon"><a class="block-icon__link" href="#!">
                     <div class="block-icon__box">
-                      <div class="block-icon__ico"><img src="./assets/img/icons/ico-why-choose-2.svg" alt="block-icon"></div>
+                      <div class="block-icon__ico"><img src="{{ asset('assets/img/icons/ico-why-choose-2.svg')}}" alt="block-icon"></div>
                       <div class="block-icon__title">Reliable &<br> Fast Service</div>
                     </div>
                   </a></div>
@@ -246,7 +251,7 @@
               <div>
                 <div class="block-icon"><a class="block-icon__link" href="#!">
                     <div class="block-icon__box">
-                      <div class="block-icon__ico"><img src="./assets/img/icons/ico-why-choose-3.svg" alt="block-icon"></div>
+                      <div class="block-icon__ico"><img src="{{ asset('assets/img/icons/ico-why-choose-3.svg')}}" alt="block-icon"></div>
                       <div class="block-icon__title">Best Prices<br> Gurantee</div>
                     </div>
                   </a></div>
@@ -254,7 +259,7 @@
               <div>
                 <div class="block-icon"><a class="block-icon__link" href="#!">
                     <div class="block-icon__box">
-                      <div class="block-icon__ico"><img src="./assets/img/icons/ico-why-choose-4.svg" alt="block-icon"></div>
+                      <div class="block-icon__ico"><img src="{{ asset('assets/img/icons/ico-why-choose-4.svg')}}" alt="block-icon"></div>
                       <div class="block-icon__title">Rent With Full<br> Security</div>
                     </div>
                   </a></div>
@@ -286,7 +291,7 @@
           <div class="equipment-box__desc">
             <div class="equipment-box__title">Worried About The Idling Yard?</div>
             <div class="equipment-box__text">Start hiring our equipment(s) today!</div>
-            <div class="equipment-box__btn"><a class="uk-button uk-button-large"><span>Learn more</span><img src="{{ asset('assets/img/icons/arrow.svg"')}} alt="arrow" data-uk-svg></a></div>
+            <div class="equipment-box__btn"><a href="{{ route('about.us')}}" class="uk-button uk-button-large"><span>Learn more</span><img src="{{ asset('assets/img/icons/arrow.svg"')}} alt="arrow" data-uk-svg></a></div>
           </div>
         </div>
       </div>
@@ -301,38 +306,7 @@
           <div data-uk-slider="autoplay: true">
             <div class="uk-position-relative" tabindex="-1">
               <ul class="uk-slider-items uk-grid uk-grid-medium uk-child-width-1-2@m">
-                <li>
-                  <div class="review-item">
-                    <div class="review-item__box">
-                      <div class="review-item__title">Satisfied With The Facilities At {{ trans('panel.site_title') }} Construction Equipment Rental </div>
-                      <div class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip commodo da consequat duis aute irue derit voluptate cillum dolore afugiat.</div>
-                      <div class="review-item__user">
-                        <div class="review-item__avatar"><img src="./assets/img/review-avatar-1.png" alt="review-avatar"></div>
-                        <div class="review-item__info">
-                          <div class="review-item__name">Donald H. James</div>
-                          <div class="review-item__position">Rental Customer</div>
-                        </div>
-                        <div class="review-item__stars"> <img src="./assets/img/icons/stars.svg" alt="stars"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="review-item">
-                    <div class="review-item__box">
-                      <div class="review-item__title">Satisfied With The Facilities At {{ trans('panel.site_title') }} Construction Equipment Rental </div>
-                      <div class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip commodo da consequat duis aute irue derit voluptate cillum dolore afugiat.</div>
-                      <div class="review-item__user">
-                        <div class="review-item__avatar"><img src="./assets/img/review-avatar-2.png" alt="review-avatar"></div>
-                        <div class="review-item__info">
-                          <div class="review-item__name">Katherine A. Fogg</div>
-                          <div class="review-item__position">Rental Customer</div>
-                        </div>
-                        <div class="review-item__stars"> <img src="./assets/img/icons/stars.svg" alt="stars"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                  
                 <li>
                   <div class="review-item">
                     <div class="review-item__box">

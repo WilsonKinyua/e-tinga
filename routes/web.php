@@ -129,3 +129,5 @@ Route::get('contact-us',"HomePageController@contactUs")->name('contact.us');
 Route::post('contact/add','HomePageController@contactAdd')->name('contact.add');
 // adding subscribers
 Route::post('subscriber/add',"HomePageController@addNewsletter")->name('subsciber.add');
+// homepage search
+Route::post("search","HomePageController@search")->name("search.machinery");

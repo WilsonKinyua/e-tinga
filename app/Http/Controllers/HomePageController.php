@@ -88,4 +88,24 @@ class HomePageController extends Controller
         Subscriber::create($request->all());
         return redirect()->back()->with("success","You have been successfully added to our mailing list!!");
     }
+
+    // search
+    public function search(Request $request) {
+         // Get the search value from the request
+         $search = $request->input('q');
+
+         // Search in the name and description columns from the products table
+         $machineries = MachineryCategory::query()
+             ->where('name', 'LIKE', "%{$search}%")
+             ->orWhere('description', 'LIKE', "%{$search}%")
+             ->orWhere('brand', 'LIKE', "%{$search}%")
+             ->orWhere('model', 'LIKE', "%{$search}%")
+             ->orWhere('manufacturer', 'LIKE', "%{$search}%")
+             ->orWhere('rated_power', 'LIKE', "%{$search}%")
+             ->orWhere('pressure_to_the_ground', 'LIKE', "%{$search}%")
+             ->get();
+        
+        $categories = Category::with(['media'])->get();
+        return view('homepage.search',compact('categories','machineries'));
+    }
 }
