@@ -16,22 +16,22 @@ class SystemCalendarController extends Controller
             'suffix'     => '',
             'route'      => 'admin.bookings.edit',
         ],
-        [
-            'model'      => '\App\Models\ContactMessage',
-            'date_field' => 'created_at',
-            'field'      => 'subject',
-            'prefix'     => '',
-            'suffix'     => '',
-            'route'      => 'admin.contact-messages.edit',
-        ],
-        [
-            'model'      => '\App\Models\Subscriber',
-            'date_field' => 'created_at',
-            'field'      => 'email',
-            'prefix'     => '',
-            'suffix'     => '',
-            'route'      => 'admin.subscribers.edit',
-        ],
+        // [
+        //     'model'      => '\App\Models\ContactMessage',
+        //     'date_field' => 'created_at',
+        //     'field'      => 'subject',
+        //     'prefix'     => '',
+        //     'suffix'     => '',
+        //     'route'      => 'admin.contact-messages.edit',
+        // ],
+        // [
+        //     'model'      => '\App\Models\Subscriber',
+        //     'date_field' => 'created_at',
+        //     'field'      => 'email',
+        //     'prefix'     => '',
+        //     'suffix'     => '',
+        //     'route'      => 'admin.subscribers.edit',
+        // ],
     ];
 
     public function index()

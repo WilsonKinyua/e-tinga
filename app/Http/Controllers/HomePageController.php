@@ -13,6 +13,10 @@ use App\Models\Slider;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use AfricasTalking\SDK\AfricasTalking;
+use App\Models\Booking;
+use App\Models\Farmer;
+use DateTime;
 
 class HomePageController extends Controller
 {
@@ -124,5 +128,71 @@ class HomePageController extends Controller
         $categories = Category::with(['media'])->get();
         $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
         return view('homepage.search',compact('categories','machineries','top_machinery'));
+    }
+
+    // create bookings together with the farmer details
+    public function createBooking(Request $request) {
+
+        // know which machinery it is
+        $machinery = MachineryCategory::findOrFail($request->id);
+
+        // create farmer details
+        $data1 = [
+            "name" => $request->name,
+            "phone" => $request->phone,
+            "email" => $request->email,
+            "address" => $request->address,
+            "id_number" => $request->id_number
+        ];
+        $farmer = Farmer::create($data1);
+
+        // calculating total cost
+
+            $fdate = $request->order_start_date;
+            $tdate = $request->order_end_date;
+            $datetime1 = new DateTime($fdate);
+            $datetime2 = new DateTime($tdate);
+            $interval = $datetime1->diff($datetime2);
+            $days = $interval->format('%a');//now do whatever you like with $days
+
+            // total cost
+
+            $cost = ($machinery->cost_per_day * $days);
+            // create bookings
+            $datab = [
+                "customer" => $request->name,
+                "phone" => $request->phone,
+                "address" => $request->address,
+                "equipment" => $machinery->name,
+                "order_start_date" => $request->order_start_date,
+                "order_end_date" => $request->order_end_date,
+                "total_cost" => $cost,
+            ];
+
+            $booking = Booking::create($datab);
+        // send sms to both the farmer and company
+        // send to farmer
+        $username = 'developernancy'; // use 'sandbox' for development in the test environment
+        $apiKey   = ''; // use your sandbox app API key for development in the test environment
+        $AT       = new AfricasTalking($username, $apiKey);
+
+        // Get one of the services
+        $sms      = $AT->sms();
+
+        // Use the service
+        $result1   = $sms->send([
+            'to'      => "+". $request->phone,
+            'message' => 'Hello, ' . $request->name . ". Thank you for booking with us. Total cost will be Ksh " . $cost . " for the equipment. Further communication will be done shortly to verify it."
+        ]);
+
+        // Use the service to send alert sms to admin
+        $result2   = $sms->send([
+            'to'      => '+254714852909',
+            'message' => 'Hello Admin. ' . "A new booking has been made by '" . $request->name . "' for equipment '" . $machinery->name . "' Having a total of Ksh " . $cost ." Kindly login to the admin panel to approve it."
+        ]);
+
+      
+        return redirect()->back()->with("success", "A new booking has been proceed successfully. Shortly you will be contacted on approval.");
+
     }
 }

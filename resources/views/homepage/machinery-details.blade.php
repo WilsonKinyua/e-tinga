@@ -165,36 +165,42 @@
             </div>
           </div>
           <div class="uk-width-1-3@m">
-            <div class="equipment-order">
-              <div class="equipment-order__price"><span><small>Select Duration</small></span></div>
-              <small style="margin:15px; text-align:center" class="text-danger">Phone should have this format to avoid getting invalid verification: "254..." eg 254717255460 </small>
-              <div class="equipment-order__form">
-                <div class="uk-margin"><input class="form-control" type="text" name="customer" placeholder="Your name"></div>
-                <div class="uk-margin">
-                    <small class="text-danger">(Please provide the correct phone number as this will be used to contact and verify you.)</small>
-                    <input class="form-control" type="text" placeholder="Phone" value="2547"></div>
-                <div class="uk-margin">
-                    <label for="">Book from: </label>
-                    <input class="js-data" type="date" name="order_start_date">
+              <form action="{{ route('book.create')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                <div class="equipment-order">
+                <div class="equipment-order__price"><span><small>Select Duration</small></span></div>
+                <small style="margin:15px; text-align:center" class="text-danger">Format "2547..." eg 254717255460 </small>
+                <div class="equipment-order__form">
+                    <input type="hidden" name="id" value="{{ $machineryCategory->id }}">
+                    <div class="uk-margin"><input class="form-control" type="text" required name="name" placeholder="Your name"></div>
+                    <div class="uk-margin"><input class="form-control" type="email" name="email" required placeholder="Your Email"></div>
+                    <div class="uk-margin"><input class="form-control" type="number" name="id_number" required placeholder="Your ID Number"></div>
+                    <div class="uk-margin">
+                        <small class="text-danger">(Please provide the correct phone number as this will be used to contact and verify you.)</small>
+                        <input class="form-control" type="number" name="phone" required placeholder="Phone" value="2547"></div>
+                    <div class="uk-margin">
+                        <label for="">Book from: </label>
+                        <input class="js-data" type="date" name="order_start_date" required>
+                    </div>
+                    <div class="uk-margin">
+                        <label for="">Book To: </label>
+                        <input class="js-data" type="date" name="order_end_date" required>
+                    </div>
+                    <div class="uk-margin"><input type="text" name="address" required placeholder="Where: Kisumu"></div>
+                    <div class="uk-margin">
+                    {{-- <div class="equipment-order__value"> <span data-uk-icon="check"></span>Dates are available </div> --}}
+                    </div>
                 </div>
-                <div class="uk-margin">
-                    <label for="">Book To: </label>
-                    <input class="js-data" type="date" name="order_end_date">
                 </div>
-                <div class="uk-margin"><input type="text" name="address" placeholder="Where: Kisumu"></div>
-                <div class="uk-margin">
-                  {{-- <div class="equipment-order__value"> <span data-uk-icon="check"></span>Dates are available </div> --}}
+                <div class="equipment-order-total">
+                <ul>
+                    {{-- <li><span>Total Rent</span><span>$580.00</span></li>
+                    <li><span>Owner Fee</span><span>$90.00</span></li>
+                    <li><span>Govt. Taxes</span><span>$45.50</span></li>
+                    <li><span>Total</span><span>$715.00</span></li> --}}
+                </ul><button class="uk-button uk-button-large uk-width-1-1" type="submit"> <span>Book now</span><img src="https://pro-theme.com/html/antek/assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></button>
                 </div>
-              </div>
-            </div>
-            <div class="equipment-order-total">
-              <ul>
-                <li><span>Total Rent</span><span>$580.00</span></li>
-                <li><span>Owner Fee</span><span>$90.00</span></li>
-                <li><span>Govt. Taxes</span><span>$45.50</span></li>
-                <li><span>Total</span><span>$715.00</span></li>
-              </ul><button class="uk-button uk-button-large uk-width-1-1" type="submit"> <span>Book now</span><img src="https://pro-theme.com/html/antek/assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

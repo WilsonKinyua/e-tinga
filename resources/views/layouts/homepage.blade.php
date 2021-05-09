@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Welcome {{ trans('panel.site_title') }}</title>
+  <title>Welcome {{ trans('panel.site_title') }} - We Offer Smarter & More Affordable Access To Rent Farm Equipment</title>
   <meta content="" name="developer">
   <meta content="{{ trans('panel.site_title') }}" name="description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

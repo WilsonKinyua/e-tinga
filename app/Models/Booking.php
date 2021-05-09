@@ -39,31 +39,31 @@ class Booking extends Model
         'deleted_at',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        Booking::observe(new \App\Observers\BookingActionObserver());
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     Booking::observe(new \App\Observers\BookingActionObserver());
+    // }
 
-    public function getOrderStartDateAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
-    }
+    // public function getOrderStartDateAttribute($value)
+    // {
+    //     return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+    // }
 
-    public function setOrderStartDateAttribute($value)
-    {
-        $this->attributes['order_start_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
-    }
+    // public function setOrderStartDateAttribute($value)
+    // {
+    //     $this->attributes['order_start_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    // }
 
-    public function getOrderEndDateAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
-    }
+    // public function getOrderEndDateAttribute($value)
+    // {
+    //     return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+    // }
 
-    public function setOrderEndDateAttribute($value)
-    {
-        $this->attributes['order_end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
-    }
+    // public function setOrderEndDateAttribute($value)
+    // {
+    //     $this->attributes['order_end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    // }
 
     protected function serializeDate(DateTimeInterface $date)
     {

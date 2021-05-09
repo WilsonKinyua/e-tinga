@@ -12,12 +12,12 @@ class CreateBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('customer');
             $table->string('address');
-            $table->integer('phone')->nullable();
+            $table->text('phone')->nullable();
             $table->string('equipment');
-            $table->datetime('order_start_date');
-            $table->datetime('order_end_date');
+            $table->date('order_start_date');
+            $table->date('order_end_date');
             $table->decimal('total_cost', 15, 2);
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -33,11 +33,11 @@ class Farmer extends Model
         'deleted_at',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        Farmer::observe(new \App\Observers\FarmerActionObserver());
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     Farmer::observe(new \App\Observers\FarmerActionObserver());
+    // }
 
     protected function serializeDate(DateTimeInterface $date)
     {

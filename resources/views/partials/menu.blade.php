@@ -158,7 +158,7 @@
                     {{ trans('cruds.siteSetting.title') }}
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
-                    @can('site_access')
+                    {{-- @can('site_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.sites.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sites") || request()->is("admin/sites/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-home c-sidebar-nav-icon">
@@ -167,7 +167,7 @@
                                 {{ trans('cruds.site.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                     @can('aboutu_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.aboutus.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/aboutus") || request()->is("admin/aboutus/*") ? "c-active" : "" }}">

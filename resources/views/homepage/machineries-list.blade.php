@@ -152,7 +152,7 @@
                     <div class="rental-item__price-old">Ksh {{ $machinery->total_rental_price_incl_taxes_before }}</div>
                   </div>
                   <div class="rental-item__price-btn"><a class="uk-button uk-button-secondary uk-button-large"
-                      href="#!">Reserve</a></div>
+                      href="{{ route('machinery.details',$machinery->id)}}">Reserve</a></div>
                 </div>
               </div>
               @endforeach

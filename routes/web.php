@@ -133,3 +133,5 @@ Route::post('contact/add','HomePageController@contactAdd')->name('contact.add');
 Route::post('subscriber/add',"HomePageController@addNewsletter")->name('subsciber.add');
 // homepage search
 Route::post("search","HomePageController@search")->name("search.machinery");
+// create bookings
+Route::post('book/create','HomePageController@createBooking')->name('book.create');

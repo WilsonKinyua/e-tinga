@@ -144,7 +144,7 @@
             <div>
               <div class="section-title">
                 <div class="uk-text-meta">About {{ trans('panel.site_title') }} Equipments Rental</div>
-                <div class="uk-h2">We Offer Smarter & More<br> Affordable Access To Rent<br> Construction Equipment</div>
+                <div class="uk-h2">We Offer Smarter & More<br> Affordable Access To Rent<br> Farm Equipment</div>
               </div>
               <p>Aiusmod tempor incididunt ut labore sed dolore magna aliquay dnim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea reprehen deritin voluptate.</p>
               <ul class="about-list">
