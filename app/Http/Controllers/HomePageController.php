@@ -23,7 +23,8 @@ class HomePageController extends Controller
         $categories = Category::with(['media'])->get();
         $reviews = CustomerReview::all();
         $blogs = Blog::orderBy('id','desc')->with(['media'])->limit(3)->get();
-        return view('welcome',compact('sliders','categories','reviews','blogs'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('welcome',compact('sliders','categories','reviews','blogs','top_machinery'));
     }
 
     // select all machineries with certain categories
@@ -36,8 +37,8 @@ class HomePageController extends Controller
         $category = Category::findOrFail($id);
         $category->with(['media'])->get();
         $categories = Category::with(['media'])->get();
-
-        return view("homepage.machineries-list", compact('machineries','category','categories'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view("homepage.machineries-list", compact('machineries','category','categories','top_machinery'));
     }
 
     // getting single machinery details
@@ -48,8 +49,8 @@ class HomePageController extends Controller
 
         $machineryCategory = MachineryCategory::findOrFail($id);
         $machineryCategory->with(['category','media'])->get();
-
-        return view('homepage.machinery-details',compact('categories','machineryCategory'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('homepage.machinery-details',compact('categories','machineryCategory','top_machinery'));
     }
 
     // getting about us page
@@ -57,14 +58,16 @@ class HomePageController extends Controller
     public function aboutUs() {
         $categories = Category::with(['media'])->get();
         $about = Aboutu::orderBy('id','desc')->limit(1)->get();
-        return view('homepage.about-us',compact('categories','about'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('homepage.about-us',compact('categories','about','top_machinery'));
     }
 
     // display blogs list
     public function blogList() {
         $categories = Category::with(['media'])->get();
         $blogs = Blog::with(['blog_category', 'created_by', 'tags', 'media'])->get();
-        return view('homepage.blogs',compact('blogs','categories'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('homepage.blogs',compact('blogs','categories','top_machinery'));
     }
 
     // preview blog details
@@ -73,7 +76,8 @@ class HomePageController extends Controller
         $blog = Blog::findOrFail($id);
         $blogs = Blog::orderBy("id","desc")->with(['blog_category', 'created_by', 'tags', 'media'])->limit(4)->get();
         $comments = Comment::where('blog_id',"=", $id)->get();
-        return view('homepage.blog-details',compact('blog','categories','blogs','comments'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('homepage.blog-details',compact('blog','categories','blogs','comments','top_machinery'));
     }
 
     // add comment
@@ -85,7 +89,8 @@ class HomePageController extends Controller
     // contact us
     public function contactUs() {
         $categories = Category::with(['media'])->get();
-        return view('homepage.contact-us',compact('categories'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('homepage.contact-us',compact('categories','top_machinery'));
     }
 
     // add contact messages
@@ -117,6 +122,7 @@ class HomePageController extends Controller
              ->get();
         
         $categories = Category::with(['media'])->get();
-        return view('homepage.search',compact('categories','machineries'));
+        $top_machinery = MachineryCategory::orderBy('id','asc')->limit(5)->get();
+        return view('homepage.search',compact('categories','machineries','top_machinery'));
     }
 }

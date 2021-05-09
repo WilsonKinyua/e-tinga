@@ -68,7 +68,9 @@
                 <li><a href="#">Top Equipments<i class="fas fa-angle-down"></i></a>
                   <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Page categories 1</a></li>
+                        @foreach ($top_machinery as $top)
+                            <li><a href="{{ route('machinery.details',$top->id)}}">{{ $top->name }}</a></li>
+                        @endforeach
                     </ul>
                   </div>
                 </li>
@@ -201,7 +203,9 @@
                 <li class="uk-active"><a href="/">Home</a></li>
                 <li class="uk-parent"><a href="#">Top Equipments</a>
                   <ul class="uk-nav-sub">
-                    <li><a href="#">Page categories 1</a></li>
+                    @foreach ($top_machinery as $top)
+                        <li><a href="{{ route('machinery.details',$top->id)}}">{{ $top->name }}</a></li>
+                    @endforeach
                   </ul>
                 </li>
                 <li class="uk-parent"><a href="#">Top Categories</a>
