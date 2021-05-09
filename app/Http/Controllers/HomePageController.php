@@ -6,6 +6,7 @@ use App\Models\Aboutu;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\ContactMessage;
+use App\Models\CustomerReview;
 use App\Models\MachineryCategory;
 use App\Models\Slider;
 use App\Models\Subscriber;
@@ -19,7 +20,9 @@ class HomePageController extends Controller
 
         $sliders = Slider::with(['media'])->get();
         $categories = Category::with(['media'])->get();
-        return view('welcome',compact('sliders','categories'));
+        $reviews = CustomerReview::all();
+        $blogs = Blog::orderBy('id','desc')->with(['media'])->limit(3)->get();
+        return view('welcome',compact('sliders','categories','reviews','blogs'));
     }
 
     // select all machineries with certain categories

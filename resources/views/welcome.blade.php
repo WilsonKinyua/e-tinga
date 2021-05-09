@@ -306,23 +306,25 @@
           <div data-uk-slider="autoplay: true">
             <div class="uk-position-relative" tabindex="-1">
               <ul class="uk-slider-items uk-grid uk-grid-medium uk-child-width-1-2@m">
-                  
-                <li>
-                  <div class="review-item">
-                    <div class="review-item__box">
-                      <div class="review-item__title">Satisfied With The Facilities At {{ trans('panel.site_title') }} Construction Equipment Rental </div>
-                      <div class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip commodo da consequat duis aute irue derit voluptate cillum dolore afugiat.</div>
-                      <div class="review-item__user">
-                        <div class="review-item__avatar"><img src="./assets/img/review-avatar-1.png" alt="review-avatar"></div>
-                        <div class="review-item__info">
-                          <div class="review-item__name">Donald H. James</div>
-                          <div class="review-item__position">Rental Customer</div>
+                  @foreach ($reviews as $review)
+                  <li>
+                    <div class="review-item">
+                      <div class="review-item__box">
+                        <div class="review-item__title">{{ $review->title }} </div>
+                        <div class="review-item__text">{{ $review->description }}</div>
+                        <div class="review-item__user">
+                          {{-- <div class="review-item__avatar"><img src="./assets/img/review-avatar-1.png" alt="review-avatar"></div> --}}
+                          <div class="review-item__info">
+                            <div class="review-item__name">{{ $review->customer_name }}</div>
+                            <div class="review-item__position">{{ $review->professional }}</div>
+                          </div>
+                          <div class="review-item__stars"> <img src="{{ asset('assets/img/icons/stars.svg')}}" alt="stars"></div>
                         </div>
-                        <div class="review-item__stars"> <img src="./assets/img/icons/stars.svg" alt="stars"></div>
                       </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                  @endforeach
+             
               </ul>
             </div>
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-large-top"></ul>
@@ -336,60 +338,39 @@
           <div class="section-title">
             <div class="uk-text-meta">We Promise To Find You The Right Equipment</div>
             <div class="uk-h2">Latest News & Updates</div>
-          </div><a class="uk-button uk-button-default uk-button-large" href="#!"><span>View all news</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a>
+          </div><a class="uk-button uk-button-default uk-button-large" href="{{ route('blogs.list')}}"><span>View all news</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></a>
         </div>
         <div class="section-content">
           <div data-uk-slider>
             <div class="uk-position-relative" tabindex="-1">
               <ul class="uk-slider-items uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@m">
-                <li>
-                  <div class="blog-item blog-item--slider">
-                    <div class="blog-item__media"><a href="#!"><img src="./assets/img/blog-1.jpg" alt="Generator Components Which You Should Know"></a>
-                      <div class="blog-item__category">Construction</div>
-                    </div>
-                    <div class="blog-item__body">
-                      <div class="blog-item__info">
-                        <div class="blog-item__date">September 23</div>
-                        <div class="blog-item__author">By <a href="#!">{{ trans('panel.site_title') }} Admin</a></div>
+                @if (count($blogs) > 0)
+                  @foreach ($blogs as $blog)
+                  <li>
+                    <div class="blog-item blog-item--slider">
+                      <div class="blog-item__media">
+                          <a href="{{ route('blog.details', $blog->id)}}">
+                            @if($blog->photo)
+                                <img src="{{ $blog->photo->getUrl() }}" alt="{{ $blog->title }}">
+                            @endif
+                          </a>
+                        <div class="blog-item__category">{{ $blog->blog_category->name ?? '' }}</div>
                       </div>
-                      <div class="blog-item__title">Generator Components Which You Should Know</div>
-                      <div class="blog-item__intro">Magna aliqua umt enimd mini venia quis ulamco aliquip commodo cons equat duis aute irue derit ...</div>
-                    </div>
-                    <div class="blog-item__bottom"> <a class="link-more" href="#!"><span>Read More</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="blog-item blog-item--slider">
-                    <div class="blog-item__media"><a href="#!"><img src="./assets/img/blog-2.jpg" alt="Generator Components Which You Should Know"></a>
-                      <div class="blog-item__category">insights</div>
-                    </div>
-                    <div class="blog-item__body">
-                      <div class="blog-item__info">
-                        <div class="blog-item__date">September 23</div>
-                        <div class="blog-item__author">By <a href="#!">{{ trans('panel.site_title') }} Admin</a></div>
+                      <div class="blog-item__body">
+                        <div class="blog-item__info">
+                          <div class="blog-item__date">{{ $blog->created_at->diffForHumans() }}</div>
+                          <div class="blog-item__author">By <a href="{{ route('blog.details', $blog->id)}}">{{ trans('panel.site_title') }} {{ $blog->created_by->name ?? '' }}</a></div>
+                        </div>
+                        <div class="blog-item__title">Generator Components Which You Should Know</div>
+                        <div class="blog-item__intro">Magna aliqua umt enimd mini venia quis ulamco aliquip commodo cons equat duis aute irue derit ...</div>
                       </div>
-                      <div class="blog-item__title">Generator Components Which You Should Know</div>
-                      <div class="blog-item__intro">Magna aliqua umt enimd mini venia quis ulamco aliquip commodo cons equat duis aute irue derit ...</div>
+                      <div class="blog-item__bottom"> <a class="link-more" href="{{ route('blog.details', $blog->id)}}"><span>Read More</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
                     </div>
-                    <div class="blog-item__bottom"> <a class="link-more" href="#!"><span>Read More</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="blog-item blog-item--slider">
-                    <div class="blog-item__media"><a href="#!"><img src="./assets/img/blog-3.jpg" alt="Generator Components Which You Should Know"></a>
-                      <div class="blog-item__category">insights</div>
-                    </div>
-                    <div class="blog-item__body">
-                      <div class="blog-item__info">
-                        <div class="blog-item__date">September 23</div>
-                        <div class="blog-item__author">By <a href="#!">{{ trans('panel.site_title') }} Admin</a></div>
-                      </div>
-                      <div class="blog-item__title">Generator Components Which You Should Know</div>
-                      <div class="blog-item__intro">Magna aliqua umt enimd mini venia quis ulamco aliquip commodo cons equat duis aute irue derit ...</div>
-                    </div>
-                    <div class="blog-item__bottom"> <a class="link-more" href="#!"><span>Read More</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
-                  </div>
-                </li>
+                  </li>
+                  @endforeach
+                @else
+                    <h4>No blogs available!!</h4>
+                @endif
               </ul>
             </div>
             <div class="uk-hidden@m">
