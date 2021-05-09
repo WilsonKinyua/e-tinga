@@ -15,6 +15,14 @@
 <img src="./screenshots/13.png" alt="screenshot" />
 <img src="./screenshots/14.png" alt="screenshot" />
 <img src="./screenshots/15.png" alt="screenshot" />
+<img src="./screenshots/16.png" alt="screenshot" />
+<img src="./screenshots/17.png" alt="screenshot" />
+<img src="./screenshots/18.png" alt="screenshot" />
+<img src="./screenshots/19.png" alt="screenshot" />
+<img src="./screenshots/20.png" alt="screenshot" />
+<img src="./screenshots/21.png" alt="screenshot" />
+<img src="./screenshots/22.png" alt="screenshot" />
+<img src="./screenshots/23.png" alt="screenshot" />
 
 # Getting started
 

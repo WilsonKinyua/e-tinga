@@ -8,14 +8,14 @@ use Carbon\Carbon;
 class SystemCalendarController extends Controller
 {
     public $sources = [
-        [
-            'model'      => '\App\Models\Booking',
-            'date_field' => 'order_start_date',
-            'field'      => 'equipment',
-            'prefix'     => '',
-            'suffix'     => '',
-            'route'      => 'admin.bookings.edit',
-        ],
+        // [
+        //     'model'      => '\App\Models\Booking',
+        //     'date_field' => 'order_start_date',
+        //     'field'      => 'equipment',
+        //     'prefix'     => '',
+        //     'suffix'     => '',
+        //     'route'      => 'admin.bookings.edit',
+        // ],
         // [
         //     'model'      => '\App\Models\ContactMessage',
         //     'date_field' => 'created_at',
