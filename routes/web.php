@@ -77,6 +77,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Bookings
     Route::resource('bookings', 'BookingsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    // approve bookings
+    Route::get('approve/bookings/{id}','BookingsController@approveBooking')->name('approve.approve');
+    // disapprove bookings
+    Route::get('disapprove/bookings/{id}','BookingsController@disapproveBooking')->name('approve.disapprove');
 
     // Category
     Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');

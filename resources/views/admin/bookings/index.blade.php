@@ -77,7 +77,11 @@
                                 {{ $booking->total_cost ?? '' }}
                             </td>
                             <td>
-                                {{ $booking->status ?? '' }}
+                                @if ($booking->status == 0)
+                                   <a href="{{ route('admin.approve.approve', $booking->id )}}" class="btn btn-danger btn-xs"> Approve</a>
+                                @else
+                                    <a href="{{ route('admin.approve.disapprove', $booking->id )}}" class="btn btn-danger btn-xs"> Unapprove</a>
+                                @endif
                             </td>
                             <td>
                                 @can('booking_show')
@@ -85,9 +89,6 @@
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
-
-
-
                             </td>
 
                         </tr>

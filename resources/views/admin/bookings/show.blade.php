@@ -84,7 +84,11 @@
                             {{ trans('cruds.booking.fields.status') }}
                         </th>
                         <td>
-                            {{ $booking->status }}
+                            @if ($booking->status == 0)
+                                <button class="btn btn-danger">Not Approved</button>
+                            @else
+                                <button class="btn btn-success">Approved</button>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

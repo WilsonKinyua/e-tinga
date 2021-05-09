@@ -172,7 +172,7 @@ class HomePageController extends Controller
             $booking = Booking::create($datab);
         // send sms to both the farmer and company
         // send to farmer
-        $username = 'developernancy'; // use 'sandbox' for development in the test environment
+        $username = ''; // use 'sandbox' for development in the test environment
         $apiKey   = ''; // use your sandbox app API key for development in the test environment
         $AT       = new AfricasTalking($username, $apiKey);
 
