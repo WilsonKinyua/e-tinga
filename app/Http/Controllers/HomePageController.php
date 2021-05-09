@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Aboutu;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\ContactMessage;
 use App\Models\CustomerReview;
 use App\Models\MachineryCategory;
@@ -71,7 +72,14 @@ class HomePageController extends Controller
         $categories = Category::with(['media'])->get();
         $blog = Blog::findOrFail($id);
         $blogs = Blog::orderBy("id","desc")->with(['blog_category', 'created_by', 'tags', 'media'])->limit(4)->get();
-        return view('homepage.blog-details',compact('blog','categories','blogs'));
+        $comments = Comment::where('blog_id',"=", $id)->get();
+        return view('homepage.blog-details',compact('blog','categories','blogs','comments'));
+    }
+
+    // add comment
+    public function addComment(Request $request) {
+        $comment = Comment::create($request->all());
+        return redirect()->back()->with('success','Comment added successfully');
     }
 
     // contact us

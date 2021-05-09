@@ -1,6 +1,5 @@
 @extends('layouts.homepage')
 
-
 @section('content')
 <main class="page-main">
     <div class="page-head">
@@ -28,19 +27,21 @@
         <div class="uk-grid" data-uk-grid>
           <div class="uk-width-2-3@m">
             <article class="article-full">
-              <div class="article-full__image" data-uk-lightbox><a href="{{ $blog->photo->getUrl() }}">
+              <div class="article-full__image" data-uk-lightbox>
                 @if($blog->photo)
+                <a href="{{ $blog->photo->getUrl() }}">
                     <img src="{{ $blog->photo->getUrl() }}" alt="">
+                </a>
                 @endif
 
-                </a>
+               
                 <div class="article-full__category">{{ $blog->blog_category->name ?? '' }}</div>
               </div>
               <h1 class="article-full__title">{{ $blog->title }}</h1>
               <div class="article-full__info">
                 <div class="article-full__date"><i class="fas fa-calendar-alt"></i><span>{{ $blog->created_at->diffForHumans() }}</span></div>
                 <div class="article-full__author"><i class="fas fa-user"></i><span>By </span><a href="#!"> {{ $blog->created_by->name ?? '' }}</a></div>
-                <div class="article-full__comments"><i class="fas fa-comment"></i><a href="#article-reviews" data-uk-scroll="offset: 120">43 Comments</a></div>
+                {{-- <div class="article-full__comments"><i class="fas fa-comment"></i><a href="#article-reviews" data-uk-scroll="offset: 120">43 Comments</a></div> --}}
                 {{-- <div class="article-full__share"><i class="fas fa-share-alt"></i><a href="#article-bottom" data-uk-scroll="offset: 120">Share This</a></div> --}}
               </div>
               <div class="article-full__content">
@@ -68,59 +69,51 @@
               </div>
               <div class="section-article-reviews" id="article-reviews">
                 <div class="section-title">
-                  <div class="uk-h2">Comments (2)</div>
+                  <div class="uk-h2">Comments</div>
                 </div>
                 <div class="section-content">
-                  <article class="uk-comment">
-                    <header class="uk-comment-header">
-                      <div class="uk-grid-medium" data-uk-grid>
-                        <div class="uk-width-auto@s"><img class="uk-comment-avatar" src="./assets/img/img-reviews-3.png" alt></div>
-                        <div class="uk-width-expand@s">
-                          <div class="uk-flex uk-flex-between uk-margin-small-bottom">
-                            <div>
-                              <h6 class="uk-comment-title uk-margin-remove">Katherine A. Fogg</h6><span class="uk-text-meta">November 25, 2020</span>
+                    @if (count($comments) > 0)
+                    @foreach ($comments as $comment)
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                          <div class="uk-grid-medium" data-uk-grid>
+                            <div class="uk-width-expand@s">
+                              <div class="uk-flex uk-flex-between uk-margin-small-bottom">
+                                <div>
+                                  <h6 class="uk-comment-title uk-margin-remove">{{ $comment->name }}</h6><span class="uk-text-meta">{{ $comment->created_at->diffForHumans() }}</span>
+                                </div>
+                              </div>
+                              <div class="uk-comment-body">
+                                <p>
+                                    {{ $comment->comment }}
+                                </p>
+                              </div>
                             </div>
-                            <div> <a class="link-more" href="#!"><span>Reply</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
                           </div>
-                          <div class="uk-comment-body">
-                            <p>Kiusmod tempor incididunt ut labore sed dolore magna aliquay enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </header>
-                  </article>
+                        </header>
+                      </article>
+                    @endforeach
+                    @else
+                        <h3 class="text-danger">No comments for this post!!</h3>
+                    @endif
+                  
+               
                   <hr class="uk-margin-medium">
-                  <article class="uk-comment">
-                    <header class="uk-comment-header">
-                      <div class="uk-grid-medium" data-uk-grid>
-                        <div class="uk-width-auto@s"><img class="uk-comment-avatar" src="./assets/img/img-reviews-4.png" alt></div>
-                        <div class="uk-width-expand@s">
-                          <div class="uk-flex uk-flex-between uk-margin-small-bottom">
-                            <div>
-                              <h4 class="uk-comment-title uk-margin-remove">David H. Medyson</h4><span class="uk-text-meta">November 25, 2020</span>
-                            </div>
-                            <div> <a class="link-more" href="#!"><span>Reply</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
-                          </div>
-                          <div class="uk-comment-body">
-                            <p>Kiusmod tempor incididunt ut labore sed dolore magna aliquay enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </header>
-                  </article>
                   <div class="block-form">
                     <div class="section-title">
                       <div class="uk-h2">Leave a Reply</div>
                     </div>
                     <div class="section-content">
                       <p>Your email address will not be published. Required fields are marked with *</p>
-                      <form action="#!">
+                      <form action="{{ route('comment.add')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="uk-grid uk-grid-small uk-child-width-1-2@s" data-uk-grid>
-                          <div><input class="uk-input uk-form-large" type="text" placeholder="Name *"></div>
-                          <div><input class="uk-input uk-form-large" type="text" placeholder="Email *"></div>
-                          <div class="uk-width-1-1"><input class="uk-input uk-form-large" type="text" placeholder="Website"></div>
-                          <div class="uk-width-1-1"><textarea class="uk-textarea uk-form-large" placeholder="Comment"></textarea></div>
-                          <div><button class="uk-button uk-button-large" type="submit"> <span>Post comment</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></button></div>
+                            <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                          <div><input class="uk-input uk-form-large" name="name" type="text" required placeholder="Name *"></div>
+                          <div><input class="uk-input uk-form-large" name="email" type="email" required placeholder="Email *"></div>
+                          <div class="uk-width-1-1"><input class="uk-input uk-form-large"  required name="website" type="text" placeholder="Website"></div>
+                          <div class="uk-width-1-1"><textarea class="uk-textarea uk-form-large" required name="comment" placeholder="Comment"></textarea></div>
+                          <div><button class="uk-button uk-button-large" type="submit"> <span>Post comment</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
                         </div>
                       </form>
                     </div>

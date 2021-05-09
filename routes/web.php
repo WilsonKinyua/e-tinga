@@ -123,6 +123,8 @@ Route::get('about-us','HomePageController@aboutUs')->name('about.us');
 Route::get("blogs",'HomePageController@blogList')->name('blogs.list');
 // preview blog details
 Route::get("blog/{id}","HomePageController@blogDetails")->name("blog.details");
+// add blog comment
+Route::post('comment/add','HomePageController@addComment')->name('comment.add');
 // contact us
 Route::get('contact-us',"HomePageController@contactUs")->name('contact.us');
 // add contact messages
