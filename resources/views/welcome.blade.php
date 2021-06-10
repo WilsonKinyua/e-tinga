@@ -53,7 +53,7 @@
                 {{-- <div>
                   <div class="uk-inline uk-width-1-1"><label> <input class="uk-radio" type="radio" name="delivery" checked><span>{{ trans('panel.site_title') }} Delivery</span></label><label> <input class="uk-radio" type="radio" name="delivery"><span>Self Pickup</span></label></div>
                 </div> --}}
-                <div><button class="uk-button uk-button-secondary uk-button-large uk-width-1-1" type="submit"><span>Find Equipment</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
+                <div><button class="uk-button uk-button-secondary uk-button-large uk-width-1-1" type="submit"><span>Search Equipment</span><img src="{{ asset('assets/img/icons/arrow.svg')}}" alt="arrow" data-uk-svg></button></div>
               </div>
             </form>
           </div>
@@ -73,7 +73,7 @@
                 <div class="category-item"> <a class="category-item__link uk-inline-clip uk-transition-toggle" href="{{ route('machinery.category', $category->id)}}" tabindex="0">
                     <div class="category-item__media">
                         @if($category->photo)
-                            <img src="{{ $category->photo->getUrl() }}" alt="Category">
+                            <img src="{{ $category->photo->getUrl() }}" style="height: 280px; width:100%" alt="Category">
                         @endif
                       <div class="uk-transition-fade">
                         <div class="uk-overlay-primary uk-position-cover"></div>
@@ -146,11 +146,11 @@
                 <div class="uk-text-meta">About {{ trans('panel.site_title') }} Equipments Rental</div>
                 <div class="uk-h2">We Offer Smarter & More<br> Affordable Access To Rent<br> Farm Equipment</div>
               </div>
-              <p>Aiusmod tempor incididunt ut labore sed dolore magna aliquay dnim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea reprehen deritin voluptate.</p>
+              {{-- <p>Aiusmod tempor incididunt ut labore sed dolore magna aliquay dnim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea reprehen deritin voluptate.</p>
               <ul class="about-list">
                 <li> <strong>The Facilities<br> Less Expensive</strong><span>Velit esse cillum dolore ipsum eu fugiat nulla pariatur. </span></li>
                 <li> <strong>Innovating<br> The Heavy Fleets</strong><span>Excepteur sint occaecat cupidat non proident sunt iny.</span></li>
-              </ul>
+              </ul> --}}
             </div>
           </div>
         </div>
@@ -272,13 +272,14 @@
               <div class="uk-h2">Over 15,000+ Rental Deals {{ trans('panel.site_title') }} Is The Best Choice</div>
             </div>
             <div class="section-content">
-              <p>Kiusmod tempor incididunt ut labore sed dolore magna aliquay enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea reprehen deritin voluptate.</p>
-              <ul class="list-checked">
+              <p>
+                Farm machinery, mechanical devices, including tractors and implements, used in farming to save labour. Farm machines include a great variety of devices with a wide range of complexity: from simple hand-held implements used since prehistoric times to the complex harvesters of modern mechanized agriculture.                </p>
+              {{-- <ul class="list-checked">
                 <li>Nostrud exercitation ullamco laboris</li>
                 <li>Ut aliquip ex ea reprehen deritin voluptate</li>
                 <li>Adipisicing elit sed eiusmod tempor incididunt</li>
                 <li>Labore dolore magna aliqua veniam nostrud</li>
-              </ul>
+              </ul> --}}
             </div>
           </div>
         </div>
@@ -324,7 +325,7 @@
                     </div>
                   </li>
                   @endforeach
-             
+
               </ul>
             </div>
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-large-top"></ul>
@@ -351,7 +352,7 @@
                       <div class="blog-item__media">
                           <a href="{{ route('blog.details', $blog->id)}}">
                             @if($blog->photo)
-                                <img src="{{ $blog->photo->getUrl() }}" alt="{{ $blog->title }}">
+                                <img src="{{ $blog->photo->getUrl() }}" style="height: 200px" alt="{{ $blog->title }}">
                             @endif
                           </a>
                         <div class="blog-item__category">{{ $blog->blog_category->name ?? '' }}</div>
@@ -361,8 +362,8 @@
                           <div class="blog-item__date">{{ $blog->created_at->diffForHumans() }}</div>
                           <div class="blog-item__author">By <a href="{{ route('blog.details', $blog->id)}}">{{ trans('panel.site_title') }} {{ $blog->created_by->name ?? '' }}</a></div>
                         </div>
-                        <div class="blog-item__title">Generator Components Which You Should Know</div>
-                        <div class="blog-item__intro">Magna aliqua umt enimd mini venia quis ulamco aliquip commodo cons equat duis aute irue derit ...</div>
+                        <div class="blog-item__title">{{ $blog->title }}</div>
+                        {{-- <div class="blog-item__intro">Magna aliqua umt enimd mini venia quis ulamco aliquip commodo cons equat duis aute irue derit ...</div> --}}
                       </div>
                       <div class="blog-item__bottom"> <a class="link-more" href="{{ route('blog.details', $blog->id)}}"><span>Read More</span><img src="./assets/img/icons/arrow.svg" alt="arrow" data-uk-svg></a></div>
                     </div>
